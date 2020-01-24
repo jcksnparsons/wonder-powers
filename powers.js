@@ -11,9 +11,6 @@ const killPowersButton = document.querySelector("#deactivate-all")
 const allThePowersButton = document.querySelector("#activate-all")
 const allPowersElement = document.querySelector("#powerList")
 
-const powerElementArray = [flightElement, mindReadingElement, xrayElement]
-const powerButtonArray = [flightElement, mindReadingElement, xrayElement]
-
 const togglePower = (element) => {
     element.classList.toggle("enabled");
 }
@@ -36,27 +33,15 @@ const buttonArray = [flightButton, mindReadingButton, xrayButton]
 const elementArray = [flightElement, mindReadingElement, xrayElement]
 
 const makeButtonsClickable = (array1, array2) => {
-    array1.forEach(button => {
-        button.addEventListener("click", () => {
-            for (i = 0; i < array2.length; i++)
-            togglePower(array2[i])
+    for (let i = 0; i < array1.length; i++) {
+        array1[i].addEventListener("click", () => {
+            for (j = 0; j < array2.length; j++)
+                togglePower(array2[i])
         })
-    })
+    }
 }
 
 makeButtonsClickable(buttonArray, elementArray)
-
-/* flightButton.addEventListener("click", () => {
-    togglePower(flightElement);
-}) 
-
-mindReadingButton.addEventListener("click", () => {
-    togglePower(mindReadingElement);
-})
-
-xrayButton.addEventListener("click", () => {
-    togglePower(xrayElement);
-}) */
 
 allThePowersButton.addEventListener("click", () => {
     toggleAllPowers(allPowersElement);
